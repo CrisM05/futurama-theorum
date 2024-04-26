@@ -4,7 +4,7 @@ import characters from "../characters.json";
 
 export const BrainContextProvider = ({ children }) => {
   const [originalBrains, setOriginalBrains] = useState([]);
-  const [newBrains, setNewBrains] = useState([]);
+  const [newBrains, setNewBrains] = useState(null);
 
   const values = {
     originalBrains,

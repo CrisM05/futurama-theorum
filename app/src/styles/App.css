@@ -22,6 +22,7 @@ h1 {
 
 .brain {
     list-style-type: none;
+    padding:2vh;
 }
 
 .brains{
@@ -34,6 +35,6 @@ h1 {
 
 .brains-container {
     margin:2vh;
-    flex-direction: column;
-    gap:2vh;
+    gap:6vh;
+    padding-bottom: 0;
 }

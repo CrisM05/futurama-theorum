@@ -15,3 +15,7 @@
 .grid {
   display: grid;
 }
+
+.column {
+  flex-direction: column;
+}

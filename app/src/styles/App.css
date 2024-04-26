@@ -1,0 +1,39 @@
+:root {
+  --white: #fefdffff;
+  --light-blue: #00c2d1ff;
+  --dark-blue: #2f3061ff;
+  --pink: #e0777dff;
+  --burgundy: #941c2fff;
+}
+
+body {
+    background-color: var(--white);
+    font-family: 'Consolas';
+}
+
+nav {
+    background-color: var(--pink);
+    padding:2vh;
+}
+
+h1 {
+    color: var(--dark-blue);
+}
+
+.brain {
+    list-style-type: none;
+}
+
+.brains{
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    position: relative;
+    width: 33%;
+    margin: 0 auto;
+}
+
+.brains-container {
+    margin:2vh;
+    flex-direction: column;
+    gap:2vh;
+}

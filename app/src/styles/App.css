@@ -34,7 +34,41 @@ h1 {
 }
 
 .brains-container {
-    margin:2vh;
-    gap:6vh;
-    padding-bottom: 0;
+    margin:2vh 0;
+    gap:1.4vh;
+    padding: 1vh 0;
+    /* border:1px solid black; */
+
+}
+
+.form-container {
+    margin:3vh;
+}
+
+#brain-form {
+    gap:2vw;
+}
+
+input {
+    max-width: 5vw;
+    text-align: center;
+    height: 100%;
+}
+
+.swapped-brain {
+    color: var(--burgundy);
+}
+
+.original-brain {
+    color: var(--dark-blue)
+}
+
+.helper {
+    gap: 3vh;
+    color: var(--pink);
+    font-weight: bolder;
+}
+
+h2 {
+    gap:2vw;
 }

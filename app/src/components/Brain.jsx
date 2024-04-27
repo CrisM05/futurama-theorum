@@ -9,7 +9,7 @@ const Brain = ({ originalName, changedName }) => {
           <>
           <li>|</li>
           <li>v</li>
-            <li>{changedName}</li>
+            <li className="swapped-brain">{changedName}</li>
           </>
         )}
       </ul>

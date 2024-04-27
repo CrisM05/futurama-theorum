@@ -5,28 +5,35 @@ import OriginalBrainContainer from "./OriginalBrainContainer";
 import NewBrainContainer from "./NewBrainContainer";
 import { useContext, useEffect } from "react";
 import brainContext from "../context/BrainContext";
+import BrainForm from "./BrainForm";
 
 const App = () => {
-  const tempBrains = ["Allan", "Arron", "Nico", "Maya", "Dom"];
-  const { originalBrains, setOriginalBrains, newBrains } =
-    useContext(brainContext);
+  const { originalBrains, newBrains, minValue, setOriginalBrains, characters } = useContext(brainContext);
+
   useEffect(() => {
-    setOriginalBrains(tempBrains);
-  }, []);
+    const output = Array(minValue);
+    for (let i = 0; i < minValue; i++) {
+      output[i] = characters[i];
+    }
+    setOriginalBrains(output);
+  },[minValue])
+  
   return (
     <>
       <Nav />
+      <BrainForm />
+      <h2 className="flex center">Brains: </h2>
       <OriginalBrainContainer>
-        {tempBrains.map((name, i) => (
+        {originalBrains?.map((name, i) => (
           <Brain key={i} originalName={name} />
         ))}
       </OriginalBrainContainer>
-      <NewBrainContainer>
-        {newBrains &&
+      {newBrains && <NewBrainContainer>
+        {
           newBrains.map((el, i) => (
             <Brain key={i} originalName={originalBrains[i]} changedName={originalBrains[el]} />
           ))}
-      </NewBrainContainer>
+      </NewBrainContainer>}
     </>
   );
 };

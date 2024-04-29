@@ -6,5 +6,4 @@ export default defineConfig({
   build: { outDir: ".." },
   // needed for github pages just put the repo name here
   base: "/futurama-theorum/",
-  plugins: [react()],
 });

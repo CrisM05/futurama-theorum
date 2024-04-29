@@ -2,7 +2,7 @@ import { useContext } from "react";
 import brainContext from "../context/BrainContext";
 
 const UnScramble = () => {
-  const { swapTracker, helpers, originalBrains } = useContext(brainContext);
+  const { swapTracker, helpers, originalBrains,setMoves } = useContext(brainContext);
 
   const handleClick = (e) => {
     const allCircles = [];
@@ -43,12 +43,13 @@ const UnScramble = () => {
     }
     let { helper1, helper2 } = helpers;
     const originalHelper1 = helper1;
+    const originalHelper2 = helper2;
 
     const moves = [];
 
     allCircles.forEach((circle) => {
       //Have the first of the two helpers swap with the person in front of circle one
-      moves.push({original : 'helper1', newBody: circle[0]});
+      moves.push({original : originalHelper1, newBody: circle[0]});
       let temp1 = helper1;
       helper1 = circle[0];
       circle[0] = temp1;
@@ -56,26 +57,26 @@ const UnScramble = () => {
       //Have person two swap with everyone in the circle back to front
       const backIndex = circle.length - 1;
       for (let i = backIndex; i >= 0; i--) {
-        moves.push({original: 'helper2', newBody: circle[i]});
+        moves.push({original: originalHelper2, newBody: circle[i]});
         const temp2 = helper2;
         helper2 = circle[i];
         circle[i] = temp2;
       }
 
       //First swaps with person in the back of the circle
-      moves.push({ original: 'helper1', newBody: circle[backIndex] });
+      moves.push({ original: originalHelper1, newBody: circle[backIndex] });
       temp1 = helper1;
       helper1 = circle[backIndex];
       circle[backIndex] = temp1;
     });
     if (helper1 !== originalHelper1) {
-      moves.push({ original: 'helper1', newBody: 'helper2' });
+      moves.push({ original: originalHelper1, newBody: originalHelper2 });
 
       const temp1 = helper1;
       helper1 = helper2;
       helper2 = temp1;
     }
-
+    setMoves(moves);
     moves.forEach(el => console.log(el))
   };
 

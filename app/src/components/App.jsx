@@ -6,9 +6,17 @@ import NewBrainContainer from "./NewBrainContainer";
 import { useContext, useEffect } from "react";
 import brainContext from "../context/BrainContext";
 import BrainForm from "./BrainForm";
+import UnscrambleBrainContainer from "./UnscrambleBrainContainer";
 
 const App = () => {
-  const { originalBrains, newBrains, minValue, setOriginalBrains, characters } = useContext(brainContext);
+  const {
+    originalBrains,
+    newBrains,
+    minValue,
+    setOriginalBrains,
+    characters,
+    moves,
+  } = useContext(brainContext);
 
   useEffect(() => {
     const output = Array(minValue);
@@ -16,8 +24,8 @@ const App = () => {
       output[i] = characters[i];
     }
     setOriginalBrains(output);
-  },[minValue])
-  
+  }, [minValue]);
+
   return (
     <>
       <Nav />
@@ -28,12 +36,28 @@ const App = () => {
           <Brain key={i} originalName={name} />
         ))}
       </OriginalBrainContainer>
-      {newBrains && <NewBrainContainer>
-        {
-          newBrains.map((el, i) => (
-            <Brain key={i} originalName={originalBrains[i]} changedName={originalBrains[el]} />
+      {newBrains && (
+        <NewBrainContainer>
+          {newBrains.map((el, i) => (
+            <Brain
+              key={i}
+              originalName={originalBrains[i]}
+              changedName={originalBrains[el]}
+            />
           ))}
-      </NewBrainContainer>}
+        </NewBrainContainer>
+      )}
+      {moves && (
+        <UnscrambleBrainContainer>
+          {moves?.map((move, i) => (
+            <Brain
+              key={i}
+              originalName={move.original}
+              changedName={move.newBody}
+            />
+          ))}
+        </UnscrambleBrainContainer>
+      )}
     </>
   );
 };

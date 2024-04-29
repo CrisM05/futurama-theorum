@@ -8,6 +8,7 @@ export const BrainContextProvider = ({ children }) => {
   const [minValue, setMinValue] = useState(2);
   const [swapTracker, setSwapTracker] = useState();
   const [helpers, setHelpers] = useState({});
+  const [moves, setMoves] = useState(null);
 
   const values = {
     originalBrains,
@@ -20,7 +21,9 @@ export const BrainContextProvider = ({ children }) => {
     swapTracker,
     setSwapTracker,
     helpers,
-    setHelpers
+    setHelpers,
+    moves,
+    setMoves
   };
   return (
     <BrainContext.Provider value={values}>{children}</BrainContext.Provider>

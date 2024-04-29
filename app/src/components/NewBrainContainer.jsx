@@ -16,6 +16,7 @@ const NewBrainContainer = ({ children }) => {
       <h2 className="flex center row"><p className="original-brain">Original </p> <p>{ ' -> '}</p> <p className="swapped-brain">New Body</p></h2>
       <div className="brains grid">{children}</div>
       {swapTracker && <UnScramble />}
+
     </div>
   );
 };
